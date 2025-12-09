@@ -1,0 +1,110 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at center, #2b2b2b 0%, #111 100%);
+    color: #e5e5e5;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+    background: #333;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.board {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    background: linear-gradient(180deg, #3a3a3a, #1f1f1f);
+    border: 3px solid #555;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.module {
+    margin-bottom: 25px;
+    background: #3d3d3d;
+    border: 2px solid #666;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    box-shadow: inset 0 0 10px #000;
+}
+
+.cable-slot {
+    width: 140px;
+    height: 40px;
+    border: 2px solid #777;
+    background: #111;
+    border-radius: 6px;
+    margin-top: 10px;
+    position: relative;
+    box-shadow: inset 0 0 8px #000;
+}
+
+.cable-slot:hover {
+    box-shadow: inset 0 0 12px #00c8ff;
+    transition: 0.3s;
+}
+
+.cable {
+    width: 120px;
+    height: 40px;
+    background: url('cable.svg') no-repeat center/contain;
+    position: absolute;
+    top: 0;
+    left: -130px;
+    cursor: grab;
+}
+
+.cable.inserted {
+    animation: plug-in 0.4s forwards ease-out;
+}
+
+@keyframes plug-in {
+    from { transform: translateX(-40px); opacity: 0.6; }
+    to { transform: translateX(5px); opacity: 1; }
+}
+
+.content {
+    margin-top: 15px;
+    padding: 10px;
+    background: #222;
+    border-left: 4px solid #00c8ff;
+    border-radius: 6px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+.unlocked {
+    display: block;
+    opacity: 1;
+}
+
+.led {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #300;
+    box-shadow: 0 0 6px #000;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.led.on {
+    background: #0f0;
+    animation: ledGlow 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes ledGlow {
+    from { box-shadow: 0 0 6px #0f0; }
+    to { box-shadow: 0 0 14px #0f0; }
+}
